@@ -1,0 +1,322 @@
+﻿@{
+    ViewData["Title"] = "Расчет таможенных платежей | CarBazar";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/services">Услуги</a></li>
+            <li class="breadcrumb-item active">Расчет таможенных платежей</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Расчет таможенных платежей в <span class="text-danger">Беларуси</span></h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="calculator-section bg-light p-4 rounded mb-5" id="calculator">
+                <h2 class="mb-4">Онлайн-калькулятор</h2>
+                <form id="customs-calculator">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Тип транспортного средства</label>
+                            <select class="form-select" id="vehicle-type" required>
+                                <option value="" selected disabled>Выберите тип</option>
+                                <option value="passenger">Легковой автомобиль</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Год выпуска</label>
+                            <input type="number" class="form-control" id="vehicle-year" min="1990" max="@DateTime.Now.Year" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Таможенная стоимость ($)</label>
+                            <input type="number" class="form-control" id="vehicle-price" min="100" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Объем двигателя (см³)</label>
+                            <input type="number" class="form-control" id="engine-volume" min="0">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Страна происхождения</label>
+                        <select class="form-select" id="vehicle-origin" required>
+                            <option value="" selected disabled>Выберите страну</option>
+                            <option value="eaeu">Страны ЕАЭС</option>
+                            <option value="europe">Европа</option>
+                            <option value="usa">США</option>
+                            <option value="uae">ОАЭ</option>
+                            <option value="china">Китай</option>
+                            <option value="other">Другие страны</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100">Рассчитать</button>
+                </form>
+
+                <div class="results mt-4 p-3 border rounded" id="calculation-results" style="display: none;">
+                    <h4 class="mb-3">Результаты расчета</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Таможенная пошлина:</th>
+                                <td id="customs-duty">-</td>
+                            </tr>
+                            <tr>
+                                <th>Акциз:</th>
+                                <td id="excise-tax">-</td>
+                            </tr>
+                            <tr>
+                                <th>НДС:</th>
+                                <td id="vat">-</td>
+                            </tr>
+                            <tr class="table-active">
+                                <th><strong>Итого к оплате:</strong></th>
+                                <td><strong id="total-payment">-</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-warning mt-3">
+                        <i class="bi bi-info-circle"></i> Расчет является предварительным. Для точного расчета обратитесь к нашим специалистам.
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section mb-5">
+                <h2 class="mb-4">Как рассчитываются таможенные платежи в Беларуси</h2>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="bi bi-percent text-danger me-2"></i> Таможенная пошлина</h3>
+                        <p>Размер пошлины зависит от:</p>
+                        <ul>
+                            <li>Страны происхождения (для стран ЕАЭС - 0%)</li>
+                            <li>Возраста автомобиля (до 3 лет, 3-7 лет, более 7 лет)</li>
+                            <li>Объема двигателя (для автомобилей старше 3 лет)</li>
+                        </ul>
+                        <p class="mb-0"><strong>Пример:</strong> Для бензиновых авто из вне ЕАЭС младше 3 лет - 15% от стоимости, но не менее 0,5 € за 1 см³ двигателя.</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="bi bi-cash-stack text-danger me-2"></i> Акцизный сбор</h3>
+                        <p>Рассчитывается по формуле в зависимости от:</p>
+                        <ul>
+                            <li>Объема двигателя</li>
+                            <li>Экологического класса</li>
+                            <li>Мощности (л.с.)</li>
+                        </ul>
+                        <p><strong>Базовая ставка:</strong> От 0,5 до 30 базовых величин за 1 см³.</p>
+                        <p class="mb-0"><strong>Для электромобилей:</strong> Акциз не взимается до 2025 года.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3><i class="bi bi-receipt text-danger me-2"></i> НДС</h3>
+                        <p>Стандартная ставка НДС в Беларуси составляет 20% и начисляется на:</p>
+                        <ul>
+                            <li>Таможенную стоимость автомобиля</li>
+                            <li>Плюс таможенную пошлину</li>
+                            <li>Плюс акцизный сбор</li>
+                        </ul>
+                        <p class="mb-0"><strong>Пример расчета:</strong> Если стоимость авто $10,000, пошлина $1,500, акциз $500, то НДС = ($10,000 + $1,500 + $500) × 20% = $2,400</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-cases mb-5">
+                <h2 class="mb-4">Особые случаи и льготы</h2>
+
+                <div class="accordion" id="specialCasesAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                <i class="bi bi-lightning-charge text-warning me-2"></i> Электромобили
+                            </button>
+                        </h3>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#specialCasesAccordion">
+                            <div class="accordion-body">
+                                <p>Для электромобилей действуют льготы до 1 января 2025 года:</p>
+                                <ul>
+                                    <li>Таможенная пошлина - 0%</li>
+                                    <li>Акцизный сбор - 0%</li>
+                                    <li>НДС - 20% (на общих основаниях)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                <i class="bi bi-arrow-left-right text-primary me-2"></i> Транспорт из ЕАЭС
+                            </button>
+                        </h3>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#specialCasesAccordion">
+                            <div class="accordion-body">
+                                <p>Для автомобилей из стран Евразийского экономического союза (Россия, Казахстан и др.):</p>
+                                <ul>
+                                    <li>Таможенная пошлина - 0%</li>
+                                    <li>Акциз и НДС - по стандартным ставкам</li>
+                                    <li>Не требуется предоставление таможенной декларации</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                <i class="bi bi-person-vcard text-success me-2"></i> Для физических лиц
+                            </button>
+                        </h3>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#specialCasesAccordion">
+                            <div class="accordion-body">
+                                <p>При ввозе автомобиля для личного пользования:</p>
+                                <ul>
+                                    <li>Возможен единоразовый ввоз без уплаты пошлин (с ограничениями)</li>
+                                    <li>Льготы для инвалидов</li>
+                                    <li>Особые условия для участников госпрограмм</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar-section">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Нужна точная информация?</h3>
+                        <p class="card-text">Наши специалисты подготовят индивидуальный расчет с учетом всех нюансов:</p>
+                        <ul class="mb-3">
+                            <li>Точные ставки для вашего автомобиля</li>
+                            <li>Оптимизация таможенных платежей</li>
+                            <li>Актуальные льготы и программы</li>
+                        </ul>
+                        <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Перезвоните мне</button>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Свяжитесь с нами</h3>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="viber://chat?number=+375291707001" class="btn btn-outline-primary">
+                                <i class="bi bi-phone-vibrate"></i> Viber
+                            </a>
+                            <a href="https://t.me/carbazarbot" class="btn btn-outline-primary">
+                                <i class="bi bi-telegram"></i> Telegram
+                            </a>
+                            <a href="https://wa.me/375291707001" class="btn btn-outline-primary">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="consultation">
+                    <div class="card-body">
+                        <h3 class="card-title">Консультация специалиста</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Телефон" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select">
+                                    <option selected disabled>Тип транспортного средства</option>
+                                    <option>Легковой автомобиль</option>
+                                    <option>Внедорожник</option>
+                                    <option>Коммерческий транспорт</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger w-100">Получить консультацию</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script>
+        document.getElementById('customs-calculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Простая демонстрационная логика расчета
+            const price = parseFloat(document.getElementById('vehicle-price').value) || 0;
+            const year = parseInt(document.getElementById('vehicle-year').value) || new Date().getFullYear();
+            const type = document.getElementById('vehicle-type').value;
+
+            let duty = 0;
+            let excise = 0;
+
+            // Примерные ставки (должны быть заменены на актуальные)
+            if (type === 'electric') {
+                duty = 0;
+                excise = 0;
+            } else if (year >= new Date().getFullYear() - 3) {
+                duty = price * 0.15;
+                excise = price * 0.1;
+            } else {
+                duty = price * 0.2;
+                excise = price * 0.15;
+            }
+
+            const vat = (price + duty + excise) * 0.2;
+            const total = duty + excise + vat;
+
+            document.getElementById('customs-duty').textContent = duty.toFixed(2) + ' $';
+            document.getElementById('excise-tax').textContent = excise.toFixed(2) + ' $';
+            document.getElementById('vat').textContent = vat.toFixed(2) + ' $';
+            document.getElementById('total-payment').textContent = total.toFixed(2) + ' $';
+
+            document.getElementById('calculation-results').style.display = 'block';
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .calculator-section {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('/images/calculator-bg.jpg') center/cover no-repeat;
+            border-left: 4px solid #dc3545;
+        }
+
+        .results {
+            background-color: rgba(220, 53, 69, 0.05);
+            border-color: rgba(220, 53, 69, 0.3) !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #000;
+        }
+
+        .sidebar-section .card {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        h2, h3 {
+            font-weight: 600;
+        }
+
+        .table th {
+            width: 60%;
+        }
+    </style>
+}

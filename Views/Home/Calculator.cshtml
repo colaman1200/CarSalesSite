@@ -1,0 +1,242 @@
+﻿@{
+    ViewData["Title"] = "Калькулятор растаможки авто | CarBazar";
+}
+
+<main class="container py-4">
+    <h1 class="mb-4 text-center">Калькулятор расходов на авто</h1>
+
+    <div class="row g-4">
+        <!-- Левая колонка - параметры -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-danger">
+                <div class="card-body">
+                    <h3 class="card-title mb-4"><i class="bi bi-car-front-fill text-danger me-2"></i> Параметры</h3>
+
+                    <!-- Стоимость авто -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold d-block mb-2">СТОИМОСТЬ АВТО, $ <span class="text-danger">*</span></label>
+                        <input type="range" class="form-range" min="1000" max="100000" step="500" id="price-range" value="3000">
+                        <div class="d-flex justify-content-between mt-2">
+                            <span>1,000 $</span>
+                            <span id="price-value">3,000 $</span>
+                            <span>100,000 $</span>
+                        </div>
+                    </div>
+
+                    <!-- Возраст авто -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold d-block mb-2">ВОЗРАСТ АВТО, ЛЕТ <span class="text-danger">*</span></label>
+                        <input type="range" class="form-range" min="0" max="10" step="1" id="age-range" value="1">
+                        <div class="d-flex justify-content-between mt-2">
+                            <span>0</span>
+                            <span id="age-value">1</span>
+                            <span>10+</span>
+                        </div>
+                    </div>
+
+                    <!-- Площадка и аукцион -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold d-block mb-2">ПЛОЩАДКА <span class="text-danger">*</span></label>
+                            <select class="form-select" id="location">
+                                <option value="abilene">Abilene</option>
+                                <option value="houston">Houston</option>
+                                <option value="los-angeles">Los Angeles</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold d-block mb-2">АУКЦИОН <span class="text-danger">*</span></label>
+                            <select class="form-select" id="auction">
+                                <option value="copart">Copart</option>
+                                <option value="iaai">IAAI</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительные опции -->
+                    <div class="mb-2">
+                        <label class="form-label fw-bold d-block mb-2">ДОПОЛНИТЕЛЬНО</label>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="electric" role="switch">
+                            <label class="form-check-label" for="electric">Электромобиль</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="discount" role="switch">
+                            <label class="form-check-label" for="discount">Льготная растаможка</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка - результаты -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-danger">
+                <div class="card-body">
+                    <h3 class="card-title mb-4"><i class="bi bi-cash-stack text-danger me-2"></i> Детализация расходов</h3>
+
+                    <!-- Покупка и доставка -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Покупка и доставка</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td>Стоимость авто</td>
+                                        <td class="text-end" id="car-price">3,000 $</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Аукционный сбор</td>
+                                        <td class="text-end" id="auction-fee">870 $</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Транспортировка в порт США</td>
+                                        <td class="text-end" id="us-transport">425 $</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Доставка до Клайпеды</td>
+                                        <td class="text-end" id="europe-transport">1,350 $</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Растаможка и оформление -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Растаможка и оформление</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td>Таможенная пошлина</td>
+                                        <td class="text-end" id="customs-duty">5,000 €</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Таможенный сбор</td>
+                                        <td class="text-end" id="customs-fee">120 BYN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Утилизационный сбор</td>
+                                        <td class="text-end" id="recycling-fee">545 BYN</td>
+                                    </tr>
+                                    <tr class="table-danger fw-bold">
+                                        <td>ИТОГО</td>
+                                        <td class="text-end" id="total">11,905 $</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Примечание -->
+                    <div class="alert alert-warning mb-0">
+                        <i class="bi bi-info-circle me-2"></i>
+                        В расчет не входит стоимость доставки Клайпеда-Минск и комиссии за переводы.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const priceRange = document.getElementById('price-range');
+            const ageRange = document.getElementById('age-range');
+
+            const inputs = [
+                priceRange, ageRange,
+                document.getElementById('location'),
+                document.getElementById('auction'),
+                document.getElementById('electric'),
+                document.getElementById('discount')
+            ];
+
+            inputs.forEach(input => {
+                input.addEventListener('change', calculate);
+                input.addEventListener('input', calculate);
+            });
+
+            calculate();
+
+            function calculate() {
+                const price = parseInt(priceRange.value);
+                const age = parseInt(ageRange.value);
+                const isElectric = document.getElementById('electric').checked;
+                const isDiscount = document.getElementById('discount').checked;
+                const auction = document.getElementById('auction').value;
+
+                document.getElementById('price-value').textContent = price.toLocaleString() + ' $';
+                document.getElementById('age-value').textContent = age;
+                document.getElementById('car-price').textContent = price.toLocaleString() + ' $';
+
+                const auctionFee = calculateAuctionFee(price, auction);
+                const usTransport = calculateTransport(price, 'us');
+                const europeTransport = calculateTransport(price, 'europe');
+                const customsDuty = calculateCustomsDuty(price, age, isElectric, isDiscount);
+                const customsFee = 120;
+                const recyclingFee = isElectric ? 200 : 545;
+
+                document.getElementById('auction-fee').textContent = auctionFee.toLocaleString() + ' $';
+                document.getElementById('us-transport').textContent = usTransport.toLocaleString() + ' $';
+                document.getElementById('europe-transport').textContent = europeTransport.toLocaleString() + ' $';
+                document.getElementById('customs-duty').textContent = customsDuty.toLocaleString() + ' €';
+                document.getElementById('customs-fee').textContent = customsFee.toLocaleString() + ' BYN';
+                document.getElementById('recycling-fee').textContent = recyclingFee.toLocaleString() + ' BYN';
+
+                const total = price + auctionFee + usTransport + europeTransport + (customsDuty * 0.9);
+                document.getElementById('total').textContent = Math.round(total).toLocaleString() + ' $';
+            }
+
+            function calculateAuctionFee(price, auction) {
+                let base = price * 0.1;
+                return auction === 'copart' ? Math.min(base, 1000) : Math.min(base, 1200);
+            }
+
+            function calculateTransport(price, type) {
+                return type === 'us' ? 400 + (price * 0.01) : 1000 + (price * 0.02);
+            }
+
+            function calculateCustomsDuty(price, age, isElectric, isDiscount) {
+                if (isElectric) return price * 0.05;
+
+                let rate = 0.15;
+                if (age > 5) rate += 0.05;
+                if (isDiscount) rate *= 0.7;
+
+                return price * rate;
+            }
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card.border-danger {
+            border-left: 4px solid #dc3545 !important;
+        }
+
+        .form-range::-webkit-slider-thumb {
+            background: #dc3545;
+        }
+
+        .form-range::-moz-range-thumb {
+            background: #dc3545;
+        }
+
+        .form-check-input:checked {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .table-sm td {
+            padding: 0.5rem;
+        }
+
+        .table-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+    </style>
+}

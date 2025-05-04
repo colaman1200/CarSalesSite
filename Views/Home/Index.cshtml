@@ -1,0 +1,140 @@
+﻿@model List<CarSalesSite.Models.Car>
+
+
+@{
+    ViewData["Title"] = "Автомобильные бренды";
+}
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active">Бренды</li>
+        </ol>
+    </nav>
+
+    <h2 class="mb-4">Автомобильные бренды</h2>
+
+    @if (ViewBag.Brands != null && ViewBag.Brands.Count > 0)
+    {
+        <div class="brands-section mb-5">
+            <h4 class="mb-3">Все бренды</h4>
+            <div class="row row-cols-3 row-cols-md-4 row-cols-lg-6 g-2">
+                @foreach (var brand in ViewBag.Brands)
+                {
+                    <div class="col">
+                        <a href="@Url.Action("ByBrand", "Cars", new { brandId = brand.BrandId })"
+                           class="btn btn-outline-secondary w-100 text-truncate">
+                            @brand.Name
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">Список брендов недоступен</div>
+    }
+
+    <div class="container mb-5">
+        <h3>Фильтр автомобилей</h3>
+        <form asp-action="Filter" asp-controller="Cars" method="get">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Цена ($)</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="minPrice" placeholder="От">
+                        <input type="number" class="form-control" name="maxPrice" placeholder="До">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">Год выпуска</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="minYear" placeholder="От">
+                        <input type="number" class="form-control" name="maxYear" placeholder="До">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">Страна</label>
+                    <select class="form-select" name="country">
+                        <option value="Europe">Европа</option>
+                        <option value="USA">США</option>
+                        <option value="Korea">Корея</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 align-self-end">
+                    <button type="submit" class="btn btn-primary w-100">Найти</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    @if (ViewBag.FilterTitle != null)
+    {
+        <h3 class="mb-4">@ViewBag.FilterTitle</h3>
+    }
+
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var car in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <!-- Добавление изображения -->
+                    @if (car.PhotoUrls.Any())
+                    {
+                        <img src="@car.PhotoUrls.First()"
+                             class="card-img-top"
+                             alt="@car.Brand.Name @car.Model"
+                             style="height: 200px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                             style="height: 200px;">
+                            <i class="bi bi-image fs-1 text-muted"></i>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@car.Brand.Name @car.Model</h5>
+                        <p class="card-text">
+                            Год: @car.Year<br>
+                            Цена: @car.Price @car.Currency<br>
+                            Страна: @car.CountryOrigin
+                        </p>
+
+                        <!-- Кнопки действий -->
+                        <a href="@Url.Action("Details", "Cars", new { id = car.CarId })"
+                           class="btn btn-outline-primary mt-2">Подробнее</a>
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Styles {
+    <style>
+        .brands-section .btn {
+            transition: all 0.3s ease;
+        }
+
+            .brands-section .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+        .card {
+            transition: transform 0.3s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            }
+    </style>
+}

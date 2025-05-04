@@ -1,0 +1,176 @@
+﻿@{
+    ViewData["Title"] = "О компании CARZAR";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active">О компании</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">О компании <span class="text-danger">CARBAZAR</span></h1>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Наша история</h3>
+                    <p class="card-text">
+                        Компания CarBazar — ваш надежный партнер в мире автомобилей. Мы начали с идеи сделать процесс покупки авто простым, удобным и прозрачным для каждого клиента. Сегодня CarBazar предлагает широкий выбор автомобилей из Европы, США и Южной Кореи, помогая подобрать оптимальный вариант под любые требования и бюджет.
+
+                        Наша миссия — предоставить качественные автомобили по доступным ценам, обеспечивая надежность, комфорт и уверенность в каждой сделке. 🚗💨</p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Наши преимущества</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Более 1000 довольных клиентов
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Гарантия на все автомобили
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Прозрачные условия сделки
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Профессиональный подбор авто
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Наши услуги</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-car-front fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h5>Импорт авто</h5>
+                                    <p class="text-muted small">Из Европы, США и Азии</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-file-earmark-text fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h5>Растаможка</h5>
+                                    <p class="text-muted small">Полное сопровождение</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-truck fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h5>Доставка</h5>
+                                    <p class="text-muted small">Быстро и надежно</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-shield-check fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h5>Гарантия</h5>
+                                    <p class="text-muted small">На все автомобили</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Контакты</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-geo-alt-fill me-2 text-danger"></i>
+                            г. Гродно, ул. Терешковая, 32
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone-fill me-2 text-danger"></i>
+                            +375 (29) 824 - 77 - 87
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-envelope-fill me-2 text-danger"></i>
+                            kirillvasilevich1337@gmail.com
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-clock-fill me-2 text-danger"></i>
+                            Пн-Пт: 9:00-19:00, Сб-Вс: 10:00-16:00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+            padding-bottom: 60px; 
+            position: relative;
+            z-index: 1; 
+        }
+
+        
+        .card {
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; 
+            position: relative;
+            z-index: 2; 
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+            }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        .list-group-item {
+            border-left: none;
+            border-right: none;
+        }
+
+        
+        footer {
+            position: relative;
+            z-index: 0; 
+            margin-top: auto; /
+        }
+    </style>
+
+
+}
