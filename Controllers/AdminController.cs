@@ -25,24 +25,33 @@ namespace CarSalesSite.Controllers
         }
 
         // Редактирование автомобиля
-        public IActionResult EditCar(int? id)
+        [HttpPost]
+        public async Task<IActionResult> EditCar(Car car)
         {
-            // Режим добавления нового авто
-            if (id == null)
+            if (!ModelState.IsValid)
             {
                 ViewBag.Brands = _context.Brands.ToList();
-                return View(new Car());
+                return View(car);
             }
 
-            // Режим редактирования
-            var car = _context.Cars
-                .Include(c => c.Brand)
-                .FirstOrDefault(c => c.CarId == id);
+            if (car.CarId == 0)
+            {
+            
+                car.CreatedAt = DateTime.Now;
+                _context.Cars.Add(car);
+            }
+            else
+            {
+                car.Photos = string.Join(",",
+                car.Photos.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .Select(url => url.Trim())
+                .Where(url => Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                );
+                _context.Cars.Update(car);
+            }
 
-            if (car == null) return NotFound();
-
-            ViewBag.Brands = _context.Brands.ToList();
-            return View(car);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Cars");
         }
 
         [HttpPost]
