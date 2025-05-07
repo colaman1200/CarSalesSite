@@ -54,12 +54,12 @@
                     </select>
                 </div>
 
-                <!-- Поле для ссылок на фото -->
-                <div class="form-group">
+                <<div class="form-group">
                     <label asp-for="Photos">Ссылки на фото (через запятую)</label>
-                    <textarea asp-for="Photos" class="form-control" rows="3"></textarea>
+                    <textarea asp-for="Photos" class="form-control" rows="3"
+                      placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"></textarea>
                     <span asp-validation-for="Photos" class="text-danger"></span>
-                    <small class="form-text text-muted">Пример: https://example.com/photo1.jpg, https://example.com/photo2.jpg</small>
+    
                 </div>
             </div>
         </div>
