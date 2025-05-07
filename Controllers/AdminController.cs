@@ -54,36 +54,7 @@ namespace CarSalesSite.Controllers
                 return RedirectToAction("Cars");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditCar(Car car)
-        {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Brands = _context.Brands.ToList();
-                return View(car);
-            }
-
-            if (car.CarId == 0)
-            {
-                // Добавление нового авто
-                car.CreatedAt = DateTime.Now;
-                _context.Cars.Add(car);
-            }
-            else
-            {
-                // Обновление существующего
-                _context.Cars.Update(car);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Cars");
-        }
-
-        public IActionResult AddCar()
-        {
-            ViewBag.Brands = _context.Brands.ToList();
-            return View(new Car());
-        }
+        
 
         [HttpPost]
         public async Task<IActionResult> AddCar(Car car)
