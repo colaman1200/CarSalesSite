@@ -55,6 +55,14 @@
                         <option value="Корея">Корея</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label asp-for="Photos">Ссылки на фото (через запятую)</label>
+                    <textarea asp-for="Photos"
+                      class="form-control"
+                      rows="5"
+                      id="photoUrlsTextarea">@Model.Photos</textarea>
+    
+                </div>
             </div>
         </div>
 
