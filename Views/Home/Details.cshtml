@@ -1,0 +1,290 @@
+@model CarSalesSite.Models.Car
+
+@{
+    ViewData["Title"] = "Детали автомобиля";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">@Model.Brand.Name @Model.Model</h2>
+        </div>
+
+        <div class="card-body">
+            
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    @if (Model.PhotoUrls.Any())
+                    {
+                        
+                        <div id="carGallery" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.PhotoUrls.Count; i++)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img src="@Model.PhotoUrls[i]"
+                                             class="d-block w-100 img-fluid rounded gallery-img"
+                                             alt="Фото автомобиля"
+                                             onclick="openModal('@Model.PhotoUrls[i]')"
+                                             style="cursor: zoom-in;">
+                                    </div>
+                                }
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carGallery" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carGallery" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        
+                        <div class="row mt-2">
+                            @for (int i = 0; i < Model.PhotoUrls.Count; i++)
+                            {
+                                <div class="col-3 p-1">
+                                    <img src="@Model.PhotoUrls[i]"
+                                         class="img-thumbnail thumbnail-img"
+                                         style="cursor: pointer; height: 60px; width: 100%; object-fit: cover;"
+                                         onclick="changeMainPhoto('@Model.PhotoUrls[i]', @i)"
+                                         data-bs-target="#carGallery"
+                                         data-bs-slide-to="@i">
+                                </div>
+                            }
+                        </div>
+
+                        
+                        <div id="imageModal" class="modal fade" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                <div class="modal-content bg-transparent border-0">
+                                    <div class="modal-header border-0">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <img id="fullSizeImage" class="img-fluid" style="max-height: 80vh;">
+                                    </div>
+                                    <div class="modal-footer justify-content-center border-0">
+                                        <button type="button" class="btn btn-secondary" onclick="prevImage()">
+                                            <i class="bi bi-chevron-left"></i> Назад
+                                        </button>
+                                        <span id="imageCounter" class="mx-3 text-white"></span>
+                                        <button type="button" class="btn btn-secondary" onclick="nextImage()">
+                                            Вперед <i class="bi bi-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="no-photo-placeholder bg-light d-flex align-items-center justify-content-center rounded" style="height: 200px;">
+                            <i class="bi bi-image fs-1 text-muted"></i>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <h3 class="text-danger">@Model.Price.ToString("N0") @Model.Currency</h3>
+                    <p class="text-muted">без доставки и растаможки</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-1"><strong>Марка:</strong> @Model.Brand.Name</p>
+                            <p class="mb-1"><strong>Модель:</strong> @Model.Model</p>
+                            <p class="mb-1"><strong>Год выпуска:</strong> @Model.Year</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1"><strong>Пробег:</strong> @Model.Mileage.ToString("N0") км</p>
+                            <p class="mb-1"><strong>Кузов:</strong> @Model.BodyType</p>
+                            <p class="mb-1"><strong>Страна:</strong> @Model.CountryOrigin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="border-top pt-3">
+                <h4 class="mb-3">Технические характеристики</h4>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <dl>
+                            <dt>Тип двигателя:</dt>
+                            <dd>@Model.FuelType</dd>
+
+                            <dt>Объем двигателя:</dt>
+                            <dd>@Model.EngineVolume л</dd>
+                        </dl>
+                    </div>
+
+                    <div class="col-md-4">
+                        <dl>
+                            <dt>Привод:</dt>
+                            <dd>@Model.DriveType</dd>
+
+                            <dt>Коробка передач:</dt>
+                            <dd>@Model.Transmission</dd>
+                        </dl>
+                    </div>
+
+                    <div class="col-md-4">
+                        <dl>
+                            <dt>Мощность:</dt>
+                            <dd>@Model.PowerHp л.с.</dd>
+
+                            <dt>Цвет:</dt>
+                            <dd>@Model.Color</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <div class="border-top pt-3 mt-3">
+                    <h4>Описание</h4>
+                    <p class="text-justify">@Model.Description</p>
+                </div>
+            }
+        </div>
+
+        
+        <div class="card-footer">
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Назад к списку
+            </a>
+            @if (User.IsInRole("admin"))
+            {
+                <a asp-controller="Admin" asp-action="EditCar" asp-route-id="@Model.CarId" class="btn btn-warning">
+                    Редактировать
+                </a>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form asp-controller="Account" asp-action="AddToFavourites" method="post">
+                    <input type="hidden" name="carId" value="@Model.CarId" />
+                    <button type="submit" class="btn btn-success float-end">
+                        <i class="bi bi-heart"></i> В избранное
+                    </button>
+                </form>
+            }
+            else
+            {
+                <a href="/Account/Login" class="btn btn-primary float-end">
+                    <i class="bi bi-box-arrow-in-right"></i> Войти для добавления
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+        let currentImageIndex = 0;
+        const images = @Json.Serialize(Model.PhotoUrls);
+
+        
+        function openModal(imgSrc, index = 0) {
+            currentImageIndex = index;
+            document.getElementById('fullSizeImage').src = imgSrc;
+            updateImageCounter();
+
+            
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            modal.show();
+        }
+
+        
+        function updateImageCounter() {
+            document.getElementById('imageCounter').textContent =
+                `${currentImageIndex + 1} / ${images.length}`;
+        }
+
+        
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            document.getElementById('fullSizeImage').src = images[currentImageIndex];
+            updateImageCounter();
+        }
+
+        
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('fullSizeImage').src = images[currentImageIndex];
+            updateImageCounter();
+        }
+
+       
+        function changeMainPhoto(imgSrc, index) {
+            document.querySelectorAll('.carousel-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.carousel-item')[index].classList.add('active');
+        }
+
+        
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('show')) {
+                if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'Escape') {
+                    bootstrap.Modal.getInstance(modal).hide();
+                }
+            }
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+
+        dt {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        dd {
+            margin-bottom: 0.8rem;
+        }
+
+        .img-fluid {
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .thumbnail-img:hover {
+            opacity: 0.8;
+            border-color: #0d6efd !important;
+        }
+
+        .modal-content {
+            background-color: transparent;
+        }
+
+        #fullSizeImage {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .no-photo-placeholder {
+            height: 200px;
+        }
+
+        .gallery-img {
+            transition: transform 0.3s;
+        }
+
+            .gallery-img:hover {
+                transform: scale(1.02);
+            }
+    </style>
+}

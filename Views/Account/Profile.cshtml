@@ -1,0 +1,46 @@
+﻿@model CarSalesSite.Models.User
+
+<h2>Личный кабинет</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Ваши данные</h4>
+        <p>Имя: @Model.Name</p>
+        <p>Email: @Model.Email</p>
+        <p>Телефон: @(Model.Phone ?? "не указан")</p>
+    </div>
+
+    <div class="col-md-6">
+        <h4>Избранные автомобили</h4>
+        @if (Model.Favourites != null && Model.Favourites.Any())
+        {
+            @foreach (var fav in Model.Favourites)
+            {
+                <div class="card mb-2">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            
+                            <h5>@(fav.Car?.Brand?.Name ?? "Неизвестный бренд") @(fav.Car?.Model ?? "Неизвестная модель")</h5>
+                            @if (fav.Car != null)
+                            {
+                                <a href="/Cars/Details/@fav.Car.CarId" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-info-circle"></i> Подробнее
+                                </a>
+                            }
+                        </div>
+                        <form asp-controller="Account" asp-action="RemoveFromFavourites" method="post">
+                            <input type="hidden" name="favouriteId" value="@fav.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Удалить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">Нет избранных автомобилей</div>
+        }
+    </div>
+</div>

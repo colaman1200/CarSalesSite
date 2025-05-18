@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - CARBAZAR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        
+        .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+            position: relative;
+        }
+
+        
+        header .navbar-nav .dropdown-menu {
+            width: auto;
+            min-width: 280px;
+            max-width: 600px;
+            white-space: normal;
+            padding: 15px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        header .dropdown-menu .container {
+            width: 100%;
+            max-width: none;
+            padding: 0;
+        }
+
+        header .dropdown-menu .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        header .dropdown-menu [class*="col-"] {
+            padding: 0 10px;
+            flex: 1 0 0%;
+            width: auto;
+            max-width: none;
+        }
+
+        header .dropdown-menu .dropdown-item {
+            white-space: normal;
+            display: block;
+            width: 100%;
+            padding: 5px 0;
+        }
+
+        
+        .click-dropdown .dropdown-menu {
+            width: auto !important;
+            white-space: normal;
+            padding: 10px 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+        }
+
+        .click-dropdown.show .dropdown-menu {
+            display: block;
+        }
+
+        .navbar .dropdown-menu .dropdown-item {
+            white-space: normal !important;
+            overflow: hidden;
+            text-overflow: clip;
+            display: flex;
+            align-items: center;
+            width: auto !important;
+            padding: 5px 10px;
+            line-height: 1.4;
+        }
+
+        /* Стили для выпадающих шторок (по наведению) */
+        .hover-dropdown .dropdown-menu {
+            width: auto !important;
+            min-width: 220px;
+            max-width: 500px;
+            white-space: normal;
+            padding: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .hover-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        
+        .mega-menu .container .row .col-md-3 {
+            width: auto;
+            max-width: 500px;
+        }
+
+        .mega-menu .dropdown-item {
+            white-space: normal !important;
+            overflow: hidden;
+            text-overflow: clip;
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            line-height: 1.4;
+        }
+
+        .mega-menu .dropdown-item {
+            margin-bottom: 8px;
+        }
+
+            .mega-menu .dropdown-item:hover {
+                background: transparent;
+                color: #dc3545;
+            }
+
+        
+        .nav-item.active .nav-link,
+        .nav-item.active .dropdown-toggle {
+            color: #dc3545 !important;
+            font-weight: 500;
+        }
+
+        
+        .dropdown-menu {
+            transition: all 0.3s ease;
+        }
+
+    </style>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!-- Верхний хедер -->
+    <header class="border-bottom">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-2">
+                <a class="navbar-brand fw-bold" href="/">CAR<span class="text-danger">BAZAR</span></a>
+
+                <div class="collapse navbar-collapse" id="navbarTop">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                О компании
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/about">О нас</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Услуги
+                            </a>
+                            <ul class="dropdown-menu p-4" aria-labelledby="navbarDropdown2">
+                                <li>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6>Импорт авто</h6>
+                                                <a class="dropdown-item" href="/importabout">Импорт автомобилей</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Растаможка</h6>
+                                                <a class="dropdown-item" href="/clearanceofcars">Помощь в растаможке авто</a>
+                                                <a class="dropdown-item" href="/headpay">Расчет таможенных платежей</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Доставка</h6>
+                                                <a class="dropdown-item" href="/delivery">Доставка и страхование авто</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Сервисы
+                            </a>
+                            <ul class="dropdown-menu p-4" aria-labelledby="navbarDropdown3">
+                                <li>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a class="dropdown-item" href="/calculator">Калькулятор расходов</a>
+                                                <a class="dropdown-item" href="https://www.searates.com/ru/container/tracking/" target="_blank">Отслеживание контейнера</a>
+                                                <a class="dropdown-item" href="https://vin.rip/vin/" target="_blank">Проверка vin - номера</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Полезное
+                            </a>
+                            <ul class="dropdown-menu p-4" aria-labelledby="navbarDropdown4">
+                                <li>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6>Статьи</h6>
+                                                <a class="dropdown-item" href="/choose">Как выбрать авто</a>
+                                                <a class="dropdown-item" href="/peculiarities">Особенности растаможки</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Советы</h6>
+                                                <a class="dropdown-item" href="/faq">Частозадаваемые вопросы</a>
+                                                
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6>Документы</h6>
+                                                <a class="dropdown-item" href="/docs">Необходимые документы</a>
+                                                <a class="dropdown-item" href="/importrules">Правила ввоза</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Контакты
+                            </a>
+                            <ul class="dropdown-menu p-4" aria-labelledby="navbarDropdown5">
+                                <li>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6>Наши контакты</h6>
+                                                <p>Адрес: г. Гродно, ул. Терешковая, 32</p>
+                                                <p>Телефон: +375 (29) 824-77-87</p>
+                                                <p>Email: kirillvasilevich1337@gmail.com</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6>Режим работы</h6>
+                                                <p>Пн-Пт: 9:00-19:00</p>
+                                                <p>Сб-Вс: 10:00-16:00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center ms-auto">
+                    <span class="me-3 fw-bold">+375 (29) 824-77-87</span>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-outline-success me-2" href="/Account/Register">Регистрация</a>
+                    }
+                    <button class="btn btn-outline-danger"data-bs-toggle="modal"data-bs-target="#callbackModal">ОБРАТНЫЙ ЗВОНОК</button>
+                </div>
+                @if (User.IsInRole("admin"))
+                {
+                    <ul class="navbar-nav ms-2">
+                        <!-- Добавлен ms-2 для отступа -->
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="/Admin/Cars">
+                                <i class="bi bi-shield-lock"></i> Админ-панель
+                            </a>
+                        </li>
+                    </ul>
+                }
+        
+                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <!-- Нижний хедер (меню категорий) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarBottom">
+                <ul class="navbar-nav">
+                    <li class="nav-item hover-dropdown">
+                        <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Cars" ? "active" : "")"
+                           href="/">Автомобили </a>
+                        <div class="dropdown-menu mega-menu">
+                            <div class="container">
+                                <div class="row">
+                                    
+                                    <div class="col-md-3">
+                                        <h6>По происхождению</h6>
+                                        <a class="dropdown-item" href="/cars/filter/origin/Europe">Из Европы</a>
+                                        <a class="dropdown-item" href="/cars/filter/origin/USA">Из США</a>
+                                        <a class="dropdown-item" href="/cars/filter/origin/Korea">Из Кореи</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6>По марке</h6>
+                                        <a class="dropdown-item" href="/cars/filter/brand/Audi">Audi</a>
+                                        <a class="dropdown-item" href="/cars/filter/brand/BMW">BMW</a>
+                                        <a class="dropdown-item" href="/cars/filter/brand/Mercedes-Benz">Mercedes-Benz</a>
+                                        <a class="dropdown-item" href="/cars/filter/brand/Volkswagen">Volkswagen</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6>По цене</h6>
+                                        <a class="dropdown-item" href="/cars/filter/price/under-10000">До 10 000$</a>
+                                        <a class="dropdown-item" href="/cars/filter/price/10000-20000">10-20 000$</a>
+                                        <a class="dropdown-item" href="/cars/filter/price/20000-30000">20-30 000$</a>
+                                        <a class="dropdown-item" href="/cars/filter/price/over-30000">От 30 000$</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#">Электрокары </a>
+                        <div class="dropdown-menu mega-menu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>Электромобили</h6>
+                                        <a class="dropdown-item" href="/cars/filter/electric/Europe">Из Европы</a>
+                                        <a class="dropdown-item" href="/cars/filter/electric/USA">Из США</a>
+                                        <a class="dropdown-item" href="/cars/filter/electric/Korea">Из Кореи</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6>Зарядные станции</h6>
+                                        <a class="dropdown-item" href="/installcharger">Установка зарядки</a>
+                                        <a class="dropdown-item" href="/services">Сервисное обслуживание</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/calculator">Калькулятор расходов</a>
+                    </li>
+                </ul>
+
+                <div class="ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="dropdown">
+                            <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person"></i> @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/Account/Profile">Профиль</a></li>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-danger" href="/Admin/Cars">
+                                            <i class="bi bi-shield-lock"></i> Админ-панель
+                                        </a>
+                                    </li>
+                                }
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="/Account/Logout">Выйти</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-white" href="/Account/Login">
+                            <i class="bi bi-person"></i> Войти
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBottom">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основное содержимое -->
+    <main class="container  py-4">
+        @RenderBody()
+    </main>
+
+    <div class="modal fade" id="callbackModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Позвонить мне</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form method="post" asp-controller="Home" asp-action="SaveCallback">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Как к вам обращаться" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="contactMethod" required>
+                                <option value="">Способ связи</option>
+                                <option value="phone">Телефон</option>
+                                <option value="telegram">Telegram</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="viber">Viber</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="tel"
+                                   class="form-control"
+                                   id="phoneInput"
+                                   name="phone"
+                                   placeholder="+375 (__) ___-__-__"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea class="form-control" name="comment" placeholder="Ваш комментарий"></textarea>
+                        </div>
+
+                        
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" required>
+                            <label class="form-check-label">
+                                Согласен на <a href="/privacy">обработку данных</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Заказать звонок</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Футер -->
+    <footer class="bg-light py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Контакты</h5>
+                    <p>+375 (29) 824-77-87</p>
+                    <p>г. Гродно, ул. Терешковая, 32</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Режим работы</h5>
+                    <p>Пн-Пт: 9:00-19:00</p>
+                    <p>Сб-Вс: 10:00-16:00</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Социальные сети</h5>
+                    <a href="https://www.facebook.com/kirill.vasilevic" class="text-dark me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/cyber._.rice/" class="text-dark me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="https://web.telegram.org/a/" class="text-dark me-2"><i class="bi bi-telegram"></i></a>
+                    <a href="https://www.youtube.com/" class="text-dark"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    <script>
+        // Инициализация выпадающих меню по клику
+        document.querySelectorAll('.click-dropdown').forEach(function(dropdown) {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    this.classList.toggle('show');
+                    this.querySelector('.dropdown-menu').classList.toggle('show');
+                }
+            });
+        });
+        // Валидация телефона
+        document.querySelector('form[asp-action="SaveCallback"]').addEventListener('submit', function(e) {
+            const phoneInput = document.querySelector('input[name="phone"]');
+            if (!/^\+375 \d{2} \d{3}-\d{2}-\d{2}$/.test(phoneInput.value)) {
+                e.preventDefault();
+                alert('Пожалуйста, введите телефон в формате: +375 29 491-19-11');
+                phoneInput.focus();
+            }
+        });
+
+        // Подсветка активного пункта меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUrl = window.location.pathname.toLowerCase();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkHref = link.getAttribute('href').toLowerCase();
+                if (currentUrl.startsWith(linkHref)) {
+                    link.classList.add('active');
+                    let parent = link.closest('.dropdown');
+                    if (parent) {
+                        parent.querySelector('.dropdown-toggle').classList.add('active');
+                    }
+                }
+            });
+        });
+            $(document).ready(function() {
+            $('#phoneInput').inputmask({
+                mask: '+375 (99) 999-99-99',
+                placeholder: '_',
+                clearIncomplete: true,
+                showMaskOnHover: false,
+                onBeforePaste: function (pastedValue, opts) {
+                    // Очистка от лишних символов при вставке
+                    return pastedValue.replace(/[^0-9]/g, '');
+                }
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info fixed-bottom m-3" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+</body>
+</html>

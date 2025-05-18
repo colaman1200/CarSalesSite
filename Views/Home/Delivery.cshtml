@@ -1,0 +1,366 @@
+﻿@{
+    ViewData["Title"] = "Доставка и страхование авто | CarBazar";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/services">Услуги</a></li>
+            <li class="breadcrumb-item active">Доставка и страхование</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Доставка и <span class="text-danger">страхование</span> автомобилей</h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="hero-section bg-light p-4 rounded mb-4">
+                <p class="lead">Организуем безопасную доставку автомобилей из США, ОАЭ, Кореи и Китая с полным страховым сопровождением</p>
+
+                <div class="d-flex flex-wrap gap-3 my-4">
+                    <a href="#calculator" class="btn btn-danger">Рассчитать стоимость доставки</a>
+                    <a href="#consultation" class="btn btn-outline-danger">Консультация логиста</a>
+                </div>
+            </div>
+
+            <div class="delivery-methods mb-5">
+                <h2 class="mb-4">Способы доставки</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-ship fs-1"></i>
+                                </div>
+                                <h3>Контейнерная перевозка</h3>
+                                <ul>
+                                    <li>Идеально для премиальных автомобилей</li>
+                                    <li>Полная защита от внешних воздействий</li>
+                                    <li>Возможность перевозки нескольких авто</li>
+                                    <li>Срок: 4-6 недель из США</li>
+                                </ul>
+                                <p class="price-badge">от $1500</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-truck fs-1"></i>
+                                </div>
+                                <h3>RO-RO (накатом)</h3>
+                                <ul>
+                                    <li>Экономичный вариант</li>
+                                    <li>Подходит для большинства автомобилей</li>
+                                    <li>Быстрая погрузка/выгрузка</li>
+                                    <li>Срок: 3-5 недель из Европы</li>
+                                </ul>
+                                <p class="price-badge">от $800</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-airplane fs-1"></i>
+                                </div>
+                                <h3>Авиадоставка</h3>
+                                <ul>
+                                    <li>Самый быстрый способ</li>
+                                    <li>Для срочных заказов</li>
+                                    <li>Максимальная безопасность</li>
+                                    <li>Срок: 3-7 дней</li>
+                                </ul>
+                                <p class="price-badge">от $5000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-train-freight-front fs-1"></i>
+                                </div>
+                                <h3>Ж/Д перевозки</h3>
+                                <ul>
+                                    <li>Оптимально для партий авто</li>
+                                    <li>Стабильные сроки</li>
+                                    <li>Из Китая и стран Азии</li>
+                                    <li>Срок: 2-3 недели</li>
+                                </ul>
+                                <p class="price-badge">от $1200</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insurance-section mb-5">
+                <h2 class="mb-4">Страхование перевозки</h2>
+
+                <div class="card border-danger mb-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <i class="bi bi-shield-check text-danger fs-1"></i>
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Полное страховое покрытие</h3>
+                                <p>Мы сотрудничаем с ведущими страховыми компаниями, чтобы обеспечить максимальную защиту вашего автомобиля на всех этапах перевозки:</p>
+                                <ul>
+                                    <li>Страхование груза (All Risks)</li>
+                                    <li>Защита от повреждений при погрузке/разгрузке</li>
+                                    <li>Покрытие форс-мажорных обстоятельств</li>
+                                    <li>Страхование ответственности перевозчика</li>
+                                </ul>
+                                <p class="mb-0"><strong>Стоимость:</strong> 1-2% от стоимости автомобиля</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-danger">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <i class="bi bi-geo-alt text-danger fs-1"></i>
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Маршруты доставки</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Из США:</h4>
+                                        <ul>
+                                            <li>Балтимор → Клайпеда</li>
+                                            <li>Нью-Йорк → Бремерхафен</li>
+                                            <li>Хьюстон → Гдыня</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Из ОАЭ:</h4>
+                                        <ul>
+                                            <li>Дубай → Одесса</li>
+                                            <li>Абу-Даби → Клайпеда</li>
+                                            <li>Шарджа → Новороссийск</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-section mb-5" id="process">
+                <h2 class="mb-4">Как мы работаем</h2>
+
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h4>Заявка и договор</h4>
+                            <p>Заключаем договор, определяем оптимальный маршрут и способ перевозки</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h4>Подготовка документов</h4>
+                            <p>Оформляем все необходимые документы для экспорта и перевозки</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h4>Страхование</h4>
+                            <p>Подбираем оптимальные страховые программы для вашего авто</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h4>Доставка</h4>
+                            <p>Организуем перевозку с постоянным мониторингом</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h4>Получение</h4>
+                            <p>Помогаем получить авто на складе и оформить документы</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar-section">
+                <div class="card mb-4" id="calculator">
+                    <div class="card-body">
+                        <h3 class="card-title">Калькулятор доставки</h3>
+                        <form id="delivery-calc-form" action="/calculator" method="get">
+                            <div class="mb-3">
+                                <label class="form-label">Страна отправки</label>
+                                <select class="form-select" name="country">
+                                    <option value="usa">США</option>
+                                    <option value="uae">ОАЭ</option>
+                                    <option value="korea">Корея</option>
+                                    <option value="china">Китай</option>
+                                    <option value="germany">Германия</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Способ доставки</label>
+                                <select class="form-select" name="deliveryMethod">
+                                    <option value="container">Контейнер</option>
+                                    <option value="roro">RO-RO (накатом)</option>
+                                    <option value="air">Авиа</option>
+                                    <option value="rail">Ж/Д</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Тип авто</label>
+                                <select class="form-select" name="vehicleType">
+                                    <option value="car">Легковой</option>
+                                    <option value="commercial">Коммерческий</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100">Рассчитать</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Наши преимущества</h3>
+                        <ul class="list-check">
+                            <li>Собственные агенты в странах экспорта</li>
+                            <li>Проверенные перевозчики</li>
+                            <li>Фиксированные сроки доставки</li>
+                            <li>Онлайн-отслеживание груза</li>
+                            <li>Страхование у надежных компаний</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" id="consultation">
+                    <div class="card-body">
+                        <h3 class="card-title">Заявка на консультацию</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Ваше имя">
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Телефон">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="Опишите ваш автомобиль и маршрут" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Перезвоните мне</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('/images/shipping-bg.jpg') center/cover no-repeat;
+            border-left: 4px solid #dc3545;
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .price-badge {
+            background: #dc3545;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: #dc3545;
+            }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .list-check li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 0.5rem;
+        }
+
+            .list-check li:before {
+                content: '\F26E';
+                font-family: 'bootstrap-icons';
+                position: absolute;
+                left: 0;
+                color: #dc3545;
+            }
+
+        .sidebar-section .card {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        h2, h3, h4 {
+            font-weight: 600;
+        }
+    </style>
+}

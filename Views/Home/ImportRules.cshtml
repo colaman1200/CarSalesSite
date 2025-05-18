@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Правила ввоза авто | CarBazar";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/useful">Полезное</a></li>
+            <li class="breadcrumb-item active">Правила ввоза</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Правила <span class="text-danger">ввоза автомобилей</span> в РБ</h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Общие правила -->
+            <div class="card mb-4 border-danger">
+                <div class="card-body">
+                    <h2 class="mb-3"><i class="bi bi-card-checklist text-danger me-2"></i> Основные требования</h2>
+
+                    <div class="rules-list">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                                <strong>Экологический класс:</strong> Не ниже Евро-5 (для бензиновых) и Евро-6 (для дизельных)
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                                <strong>Возраст:</strong> Максимальный срок с года выпуска — 5 лет (исключения для электромобилей)
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-arrow-right-circle-fill text-danger me-2"></i>
+                                <strong>Растаможка:</strong> Обязательна для всех ТС, ввозимых из-за границы
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Таможенные платежи -->
+            <div class="card mb-4 border-danger">
+                <div class="card-body">
+                    <h2 class="mb-3"><i class="bi bi-cash-coin text-danger me-2"></i> Таможенные платежи (2025)</h2>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-danger">
+                                <tr>
+                                    <th>Тип авто</th>
+                                    <th>Пошлина</th>
+                                    <th>НДС</th>
+                                    <th>Утильсбор</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Бензиновые (до 3 лет)</td>
+                                    <td>15%</td>
+                                    <td>20%</td>
+                                    <td>200-500 BYN</td>
+                                </tr>
+                                <tr>
+                                    <td>Дизельные (до 3 лет)</td>
+                                    <td>20%</td>
+                                    <td>20%</td>
+                                    <td>300-700 BYN</td>
+                                </tr>
+                                <tr>
+                                    <td>Электромобили</td>
+                                    <td>0%</td>
+                                    <td>20%</td>
+                                    <td>100 BYN</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted mt-2">* Расчет идет от кадастровой стоимости или инвойса (выбирается большая сумма).</p>
+                </div>
+            </div>
+
+            <!-- Запрещенные авто -->
+            <div class="card mb-4 border-danger">
+                <div class="card-body">
+                    <h2 class="mb-3"><i class="bi bi-slash-circle text-danger me-2"></i> Запрещено к ввозу</h2>
+
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i> Следующие автомобили <strong>не могут</strong> быть растаможены в РБ:
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">С правым рулем (кроме спецтехники)</li>
+                        <li class="list-group-item">С перебитыми VIN-номерами</li>
+                        <li class="list-group-item">Возрастом старше 5 лет (кроме классических авто по спецразрешению)</li>
+                        <li class="list-group-item">С серьезными конструктивными изменениями (без сертификации)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Процедура ввоза -->
+            <div class="card mb-4 border-danger">
+                <div class="card-body">
+                    <h2 class="mb-3"><i class="bi bi-truck text-danger me-2"></i> Этапы ввоза</h2>
+
+                    <div class="steps">
+                        <div class="step d-flex mb-4">
+                            <div class="step-number bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 30px; height: 30px;">1</div>
+                            <div>
+                                <h5>Таможенное оформление</h5>
+                                <p>Подача декларации и оплата пошлин в течение 3 дней с момента пересечения границы.</p>
+                            </div>
+                        </div>
+
+                        <div class="step d-flex mb-4">
+                            <div class="step-number bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 30px; height: 30px;">2</div>
+                            <div>
+                                <h5>Техосмотр</h5>
+                                <p>Прохождение диагностики в аккредитованном центре (проверка экологического класса).</p>
+                            </div>
+                        </div>
+
+                        <div class="step d-flex">
+                            <div class="step-number bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 30px; height: 30px;">3</div>
+                            <div>
+                                <h5>Регистрация в ГАИ</h5>
+                                <p>Получение белорусских номеров в течение 10 дней после растаможки.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сайдбар -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Калькулятор растаможки</h3>
+                    <form id="customs-calc-form" action="/calculator" method="get">
+                        <div class="mb-3">
+                            <label class="form-label">Стоимость авто (€)</label>
+                            <input type="number"
+                                   class="form-control"
+                                   name="price"
+                                   placeholder="Например, 15000"
+                                   min="1000"
+                                   required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Тип авто</label>
+                            <select class="form-select" name="vehicleType">
+                                <option value="petrol-new">Бензин (до 3 лет)</option>
+                                <option value="diesel-new">Дизель (до 3 лет)</option>
+                                <option value="electric">Электромобиль</option>
+                                <option value="petrol-old">Бензин (старше 3 лет)</option>
+                                <option value="diesel-old">Дизель (старше 3 лет)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Рассчитать</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Нужна помощь?</h3>
+                    <p>Наши таможенные брокеры помогут:</p>
+                    <ul class="mb-3">
+                        <li>Рассчитать точную стоимость</li>
+                        <li>Подготовить документы</li>
+                        <li>Провести растаможку "под ключ"</li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Консультация</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Полезные ссылки</h3>
+                    <div class="list-group">
+                        <a href="/delivery" class="list-group-item list-group-item-action">
+                            <i class="bi bi-file-earmark-pdf text-danger me-2"></i> Доставка и страхование авто
+                        </a>
+                        <a href="/docs" class="list-group-item list-group-item-action">
+                            <i class="bi bi-link-45deg text-danger me-2"></i> Необходимые документы
+                        </a>
+                        <a href="/faq" class="list-group-item list-group-item-action">
+                            <i class="bi bi-link-45deg text-danger me-2"></i> Частозадаваемые вопросы
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        .card.border-danger {
+            border-left: 4px solid #dc3545 !important;
+        }
+
+        .table-danger th {
+            background-color: rgba(220, 53, 69, 0.1) !important;
+        }
+
+        .step-number {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .alert-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-left: 3px solid #dc3545;
+        }
+    </style>
+}

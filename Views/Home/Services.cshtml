@@ -1,0 +1,282 @@
+﻿@{
+    ViewData["Title"] = "Сервисное обслуживание зарядных станций | CarBazar";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/services">Услуги</a></li>
+            <li class="breadcrumb-item active">Сервисное обслуживание</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Профессиональное <span class="text-danger">обслуживание зарядных станций</span></h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="hero-section bg-light p-4 rounded mb-4">
+                <p class="lead">Комплексное техническое обслуживание и ремонт зарядного оборудования всех типов с гарантией качества</p>
+
+                <div class="d-flex flex-wrap gap-3 my-4">
+                    <a href="/calculator" class="btn btn-danger">Рассчитать стоимость</a>
+                    <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Оставить заявку</a>
+                </div>
+            </div>
+
+            <div class="services-section mb-5">
+                <h2 class="mb-4">Виды обслуживания</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-gear fs-1"></i>
+                                </div>
+                                <h3>Плановое ТО</h3>
+                                <ul>
+                                    <li>Диагностика оборудования</li>
+                                    <li>Чистка и смазка компонентов</li>
+                                    <li>Проверка изоляции</li>
+                                    <li>Обновление ПО</li>
+                                </ul>
+                                <p class="price-badge">от 200 руб/мес</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <div class="method-icon mb-3 text-danger">
+                                    <i class="bi bi-tools fs-1"></i>
+                                </div>
+                                <h3>Экстренный ремонт</h3>
+                                <ul>
+                                    <li>Круглосуточный выезд</li>
+                                    <li>Замена компонентов</li>
+                                    <li>Восстановление питания</li>
+                                    <li>Устранение ошибок</li>
+                                </ul>
+                                <p class="price-badge">от 150 руб</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-section mb-5">
+                <h2 class="mb-4">Процесс обслуживания</h2>
+
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h4>Заявка</h4>
+                            <p>Оформление заявки через сайт или по телефону</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h4>Диагностика</h4>
+                            <p>Выезд специалиста и полная проверка оборудования</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h4>Согласование</h4>
+                            <p>Составление сметы и подписание договора</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h4>Выполнение работ</h4>
+                            <p>Проведение необходимых сервисных операций</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-section mb-5">
+                <h2 class="mb-4">Наши преимущества</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><i class="bi bi-clock-history text-primary"></i> Быстрый выезд</h4>
+                                <p>Приезжаем в течение 2 часов по Минску</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><i class="bi bi-patch-check text-success"></i> Оригинальные запчасти</h4>
+                                <p>Используем только сертифицированные компоненты</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><i class="bi bi-shield-check text-danger"></i> Гарантия</h4>
+                                <p>12 месяцев на все виды работ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><i class="bi bi-currency-exchange text-info"></i> Рассрочка</h4>
+                                <p>Возможность оплаты в 3 этапа</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar-section">
+                <div class="card mb-4" id="calculator">
+                    <div class="card-body">
+                        <h3 class="card-title">Калькулятор стоимости</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Тип обслуживания</label>
+                                <select class="form-select">
+                                    <option value="plan">Плановое ТО</option>
+                                    <option value="repair">Экстренный ремонт</option>
+                                    <option value="diagnostic">Диагностика</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Мощность станции, кВт</label>
+                                <input type="number" class="form-control" placeholder="22">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Количество станций</label>
+                                <input type="number" class="form-control" placeholder="2">
+                            </div>
+                            <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Рассчитать</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Наши партнеры</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Tesla</li>
+                            <li class="list-group-item">ABB</li>
+                            <li class="list-group-item">Schneider Electric</li>
+                            <li class="list-group-item">Bosch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" id="request">
+                    <div class="card-body">
+                        <h3 class="card-title">Заявка на обслуживание</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Телефон" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="Опишите проблему" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Отправить заявку</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('/images/service-bg.jpg') center/cover no-repeat;
+            border-left: 4px solid #dc3545;
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .price-badge {
+            background: #dc3545;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: #dc3545;
+            }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sidebar-section .card {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        h2, h3, h4 {
+            font-weight: 600;
+        }
+    </style>
+}

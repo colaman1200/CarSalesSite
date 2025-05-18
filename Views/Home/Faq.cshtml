@@ -1,0 +1,355 @@
+﻿@{
+    ViewData["Title"] = "Часто задаваемые вопросы | CarBazar";
+}
+
+<main class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active">FAQ</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Часто задаваемые <span class="text-danger">вопросы</span></h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="faq-categories mb-5">
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    <a href="#import" class="btn btn-outline-danger active">Импорт авто</a>
+                    <a href="#customs" class="btn btn-outline-danger">Растаможка</a>
+                    <a href="#delivery" class="btn btn-outline-danger">Доставка</a>
+                    <a href="#finance" class="btn btn-outline-danger">Финансы</a>
+                    <a href="#other" class="btn btn-outline-danger">Прочие вопросы</a>
+                </div>
+            </div>
+
+            <!-- Импорт авто -->
+            <div class="faq-section mb-5" id="import">
+                <h2 class="mb-4"><i class="bi bi-car-front text-danger me-2"></i> Импорт авто</h2>
+
+                <div class="accordion" id="importAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#import1">
+                                Какие страны вы рекомендуете для покупки авто?
+                            </button>
+                        </h3>
+                        <div id="import1" class="accordion-collapse collapse show" data-bs-parent="#importAccordion">
+                            <div class="accordion-body">
+                                <p>Наиболее выгодные варианты:</p>
+                                <ul>
+                                    <li><strong>США:</strong> Низкие цены, большой выбор (особенно для внедорожников)</li>
+                                    <li><strong>ОАЭ:</strong> Авто в идеальном состоянии (нет коррозии из-за сухого климата)</li>
+                                    <li><strong>Корея:</strong> Современные модели с богатыми комплектациями</li>
+                                    <li><strong>Германия:</strong> Качественные премиальные авто</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#import2">
+                                Как проверить историю автомобиля из США?
+                            </button>
+                        </h3>
+                        <div id="import2" class="accordion-collapse collapse" data-bs-parent="#importAccordion">
+                            <div class="accordion-body">
+                                <p>Мы используем официальные сервисы:</p>
+                                <ul>
+                                    <li>Carfax (полный отчет по VIN)</li>
+                                    <li>AutoCheck (альтернатива Carfax)</li>
+                                    <li>Проверка через аукционные отчеты (Copart, IAAI)</li>
+                                </ul>
+                                <p class="mb-0"><strong>Услуга CarBazar:</strong> Предоставляем полный отчет истории авто перед покупкой.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#import3">
+                                Можно ли купить авто на аукционе без посредников?
+                            </button>
+                        </h3>
+                        <div id="import3" class="accordion-collapse collapse" data-bs-parent="#importAccordion">
+                            <div class="accordion-body">
+                                <p>Теоретически — да, но на практике это сложно из-за:</p>
+                                <ul>
+                                    <li>Необходимости дилерской лицензии для участия в торгах</li>
+                                    <li>Высоких депозитов (от $5,000)</li>
+                                    <li>Сложностей с логистикой и таможней</li>
+                                </ul>
+                                <p><strong>Наше предложение:</strong> Мы берем все эти вопросы на себя, экономя ваше время и деньги.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Растаможка -->
+            <div class="faq-section mb-5" id="customs">
+                <h2 class="mb-4"><i class="bi bi-file-earmark-text text-danger me-2"></i> Растаможка</h2>
+
+                <div class="accordion" id="customsAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#customs1">
+                                Как рассчитывается таможенная стоимость?
+                            </button>
+                        </h3>
+                        <div id="customs1" class="accordion-collapse collapse show" data-bs-parent="#customsAccordion">
+                            <div class="accordion-body">
+                                <p>Таможня РБ использует:</p>
+                                <ol>
+                                    <li>Цену в договоре купли-продажи</li>
+                                    <li>Справочную стоимость аналогичных авто</li>
+                                    <li>Данные международных каталогов (Black Book, Eurotax)</li>
+                                </ol>
+                                <p class="mb-0"><strong>Итоговая стоимость:</strong> Берется наибольшая из указанных.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#customs2">
+                                Какие льготы есть при растаможке?
+                            </button>
+                        </h3>
+                        <div id="customs2" class="accordion-collapse collapse" data-bs-parent="#customsAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>Электромобили:</strong> 0% пошлины до 2025 года</li>
+                                    <li><strong>Инвалиды:</strong> Освобождение от пошлины (1 авто)</li>
+                                    <li><strong>Авто из ЕАЭС:</strong> Нет таможенной пошлины</li>
+                                    <li><strong>Гибриды:</strong> Скидка 50% на акциз</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Доставка -->
+            <div class="faq-section mb-5" id="delivery">
+                <h2 class="mb-4"><i class="bi bi-truck text-danger me-2"></i> Доставка</h2>
+
+                <div class="accordion" id="deliveryAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#delivery1">
+                                Сколько стоит доставка авто из США?
+                            </button>
+                        </h3>
+                        <div id="delivery1" class="accordion-collapse collapse show" data-bs-parent="#deliveryAccordion">
+                            <div class="accordion-body">
+                                <p>Примерные цены в 2024 году:</p>
+                                <ul>
+                                    <li><strong>Контейнерная:</strong> $1500-2500 (зависит от порта отправки)</li>
+                                    <li><strong>RO-RO (накатом):</strong> $800-1500</li>
+                                    <li><strong>Авиа:</strong> От $5000 (для срочных заказов)</li>
+                                </ul>
+                                <p class="mb-0"><strong>Совет:</strong> Контейнер надежнее, но RO-RO дешевле на 30-40%.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#delivery2">
+                                Как отслеживать груз в пути?
+                            </button>
+                        </h3>
+                        <div id="delivery2" class="accordion-collapse collapse" data-bs-parent="#deliveryAccordion">
+                            <div class="accordion-body">
+                                <p>Мы предоставляем:</p>
+                                <ol>
+                                    <li>Номер контейнера/судна</li>
+                                    <li>Доступ к системам отслеживания (Maersk, MSC и др.)</li>
+                                    <li>Регулярные отчеты о местоположении</li>
+                                    <li>Уведомления о прибытии в порт</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Финансы -->
+            <div class="faq-section mb-5" id="finance">
+                <h2 class="mb-4"><i class="bi bi-cash-coin text-danger me-2"></i> Финансы</h2>
+
+                <div class="accordion" id="financeAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#finance1">
+                                Какие способы оплаты вы принимаете?
+                            </button>
+                        </h3>
+                        <div id="finance1" class="accordion-collapse collapse show" data-bs-parent="#financeAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>Банковский перевод</strong> (в USD, EUR, BYN)</li>
+                                    <li><strong>Криптовалюты</strong> (BTC, USDT — по согласованию)</li>
+                                    <li><strong>Наличные</strong> (в офисе, с оформлением договора)</li>
+                                </ul>
+                                <p class="mb-0"><strong>Важно:</strong> Для оплаты аукционных сборов в США нужен перевод в долларах.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#finance2">
+                                Есть ли рассрочка или кредит?
+                            </button>
+                        </h3>
+                        <div id="finance2" class="accordion-collapse collapse" data-bs-parent="#financeAccordion">
+                            <div class="accordion-body">
+                                <p>Да, мы сотрудничаем с банками РБ:</p>
+                                <ul>
+                                    <li><strong>Кредит:</strong> От 8% годовых в BYN</li>
+                                    <li><strong>Рассрочка:</strong> До 12 месяцев без % (первый взнос 50%)</li>
+                                    <li><strong>Лизинг:</strong> Для юридических лиц</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Прочие вопросы -->
+            <div class="faq-section" id="other">
+                <h2 class="mb-4"><i class="bi bi-question-circle text-danger me-2"></i> Прочие вопросы</h2>
+
+                <div class="accordion" id="otherAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#other1">
+                                Даете ли вы гарантию на импортные авто?
+                            </button>
+                        </h3>
+                        <div id="other1" class="accordion-collapse collapse show" data-bs-parent="#otherAccordion">
+                            <div class="accordion-body">
+                                <p>Наши условия:</p>
+                                <ul>
+                                    <li><strong>Новые авто:</strong> Официальная гарантия производителя</li>
+                                    <li><strong>С пробегом:</strong> Гарантия 3-12 месяцев (зависит от модели)</li>
+                                    <li><strong>Аварийные авто:</strong> Гарантия только на выполненные работы</li>
+                                </ul>
+                                <p class="mb-0">Все условия прописываются в договоре.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#other2">
+                                Как быстро вы найдете мне автомобиль?
+                            </button>
+                        </h3>
+                        <div id="other2" class="accordion-collapse collapse" data-bs-parent="#otherAccordion">
+                            <div class="accordion-body">
+                                <p>Сроки подбора:</p>
+                                <ul>
+                                    <li><strong>Стандартные модели:</strong> 1-2 недели</li>
+                                    <li><strong>Редкие авто:</strong> 1-3 месяца</li>
+                                    <li><strong>Срочный поиск:</strong> До 7 дней (+20% к стоимости услуги)</li>
+                                </ul>
+                                <p>Мы начинаем работу после подписания договора и предоплаты 10%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar-section">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Не нашли ответ?</h3>
+                        <p>Задайте вопрос нашим специалистам:</p>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Ваше имя">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="Ваш вопрос" rows="4"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Контакты</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-telephone text-danger me-2"></i> +375 (29) 170-70-01</li>
+                            <li class="mb-2"><i class="bi bi-envelope text-danger me-2"></i> info@carbazar.by</li>
+                            <li class="mb-2"><i class="bi bi-clock text-danger me-2"></i> Пн-Пт: 9:00-19:00</li>
+                            <li><i class="bi bi-geo-alt text-danger me-2"></i> г. Минск, ул. Автомобильная, 12</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Популярные вопросы</h3>
+                        <div class="list-group">
+                            <a href="#import3" class="list-group-item list-group-item-action">Как купить авто на аукционе?</a>
+                            <a href="#customs2" class="list-group-item list-group-item-action">Льготы при растаможке</a>
+                            <a href="#delivery1" class="list-group-item list-group-item-action">Стоимость доставки из США</a>
+                            <a href="#finance2" class="list-group-item list-group-item-action">Кредит на импорт авто</a>
+                            <a href="#other1" class="list-group-item list-group-item-action">Гарантия на автомобиль</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+    <style>
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #000;
+            font-weight: 500;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-outline-danger.active {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .sidebar-section .card {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .list-group-item {
+            border-left: none;
+            border-right: none;
+        }
+
+        h2, h3 {
+            font-weight: 600;
+        }
+    </style>
+}
